@@ -45,7 +45,6 @@ Each array element of meetingsArray will be of type:
   export const preprocess = (meetingsArray) => {
     for (let i = 0; i < meetingsArray.length; i++) {
       const currentMeeting = meetingsArray[i];
-      console.log(currentMeeting);
       let { startTime, endTime } = currentMeeting;
       const startTimeArr = startTime.split("");
       const endTimeArr = endTime.split("");
@@ -81,7 +80,7 @@ const MeetingsArrayContextProvider = props => {
   preprocess(room1Array);
   preprocess(room2Array);
 
-    const [meetingsArray, setMeetingsArray] = useState({'room1':room1Array, 'room2':room2Array});
+    const [meetingsArray, setMeetingsArray] = useState({'room1':room1Array, 'room2':room2Array, 'room3':room1Array});
 
   return (
     <MeetingsArrayContext.Provider value={{meetingsArray:meetingsArray}}>

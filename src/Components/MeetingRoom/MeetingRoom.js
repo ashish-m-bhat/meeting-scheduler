@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import CheckClashes from "../Utils/CheckClashes";
-import CreateMeetingDivs from "../Utils/CreateMeetingDivs";
-import CreateTimingDivs from "../Utils/CreateTimingDivs";
-import Preprocess from "../Utils/Preprocess";
-import SortMeetings from "../Utils/SortMeetings";
-import '../UI/MeetingRoom.css';
+import SortMeetings from "../../Utils/SortMeetings";
+import CheckClashes from "../../Utils/CheckClashes";
+import DisplayTimings from "../DisplayTimings/DisplayTimings";
+import DisplayMeetings from "../DisplayMeetings/DisplayMeetings";
 import { useLocation } from "react-router";
-import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
+import { MeetingsArrayContext } from "../../Context/MeetingsArrayContextProvider";
+import cssClasses from './MeetingRoom.module.css';
 
 /*
   0. Get the meetingsArray from the context api using the roomid. roomid is obtained from the url
@@ -28,11 +27,11 @@ const MeetingRoom = () => {
     const {meetingsArray} = useContext(MeetingsArrayContext);
 
   return (
-    <div id="mainContainerDiv">
+    <div className={cssClasses.mainContainerDiv}>
       <SortMeetings meetingsArray={meetingsArray[roomId]}/>
       <CheckClashes meetingsArray={meetingsArray[roomId]}/>
-      <CreateTimingDivs />
-      <CreateMeetingDivs meetingsArray={meetingsArray[roomId]}/>
+      <DisplayTimings />
+      <DisplayMeetings meetingsArray={meetingsArray[roomId]}/>
     </div>
   );
 };

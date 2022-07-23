@@ -1,15 +1,4 @@
-  #meetingsDiv{
-    display:flex;
-    flex-flow:column nowrap;
-    align-items: center;
-
-    position: relative;
-    height:100%;
-    width:60%;
-    background-color: yellow;
-  }
-
-  .meetingDiv{
+.meetingDiv{
     font-size: small;
     position:absolute;
     margin-top:50px;
@@ -21,4 +10,3 @@
     border-top:1px solid gray;
     border-bottom:1px solid gray;
   }
-

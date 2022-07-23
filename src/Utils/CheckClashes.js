@@ -25,7 +25,7 @@ const CheckClashes = (props) => {
               if((nextMeeting.startTime.startTimeHours === currentMeeting.endTime.endTimeHours && nextMeeting.startTime.startTimeMinutes < currentMeeting.endTime.endTimeMinutes)
                                                           ||
                 nextMeeting.startTime.startTimeHours < currentMeeting.endTime.endTimeHours){ //Next meeting's start hour is less than current meeting's end hour
-                  console.log('clash for ', nextMeeting);
+                  // console.log('clash for ', nextMeeting);
                   // Remove the meeting
                   meetingsArray.splice(j,1);
                 }

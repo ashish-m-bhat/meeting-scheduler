@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
+import React, { useEffect } from "react";
 
 // Helper function. Returns an object fo hour and mins
 const getHoursMinutes = (arr) => {

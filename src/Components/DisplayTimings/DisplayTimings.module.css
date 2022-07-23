@@ -1,0 +1,10 @@
+.timingsDiv{
+    display:flex;
+    flex-flow:column nowrap;
+    align-items: center;
+
+    height:100%;
+    width:10%;
+    position: relative;
+    background-color: red;
+  }

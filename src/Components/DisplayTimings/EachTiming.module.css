@@ -1,0 +1,10 @@
+.timingDiv{
+    position:absolute;
+    margin-top:50px;
+    color:white;
+    cursor: pointer;
+    text-align: center;
+    background-color: green;
+    height:0.4vh;
+    width:90%;
+  }
