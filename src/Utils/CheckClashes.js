@@ -1,5 +1,4 @@
-import React, { useContext, useEffect } from "react";
-import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
+import React, { useEffect } from "react";
 
 /*
   1. Check if there's any clash in the sorted meetingsArray
@@ -10,23 +9,25 @@ import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
       b. Next meeting's start hour is less than current meeting's end hour
 */
 
-const CheckClashes = () => {
+const CheckClashes = (props) => {
     function checkClashes(meetingsArray){
         for(let i=0;i<meetingsArray.length-1;i++){
-          for(let j=i+1;j<meetingsArray.length;j++){
+          let j=i+1;
+          while(meetingsArray.length >=1 && j < meetingsArray.length){
             const currentMeeting = meetingsArray[i], nextMeeting = meetingsArray[j];
 
             if(nextMeeting.startTime.startTimeHours > currentMeeting.endTime.endTimeHours){
               // No clash
+              j++;
               continue;
             }
-            else{
-              if((nextMeeting.startTime.startTimeHours === currentMeeting.endTime.endTimeHours &&
-                nextMeeting.startTime.startTimeMinutes < currentMeeting.endTime.endTimeMinutes) ||
-                nextMeeting.startTime.startTimeHours < currentMeeting.endTime.endTimeHours){
-                  // console.log('clash for ', nextMeeting);
-
-                    meetingsArray.splice(j,1);
+            else{ // Next meeting's start hour and current meetings end hour is same and next meeting's start minutes is less than current meeting's end minutes
+              if((nextMeeting.startTime.startTimeHours === currentMeeting.endTime.endTimeHours && nextMeeting.startTime.startTimeMinutes < currentMeeting.endTime.endTimeMinutes)
+                                                          ||
+                nextMeeting.startTime.startTimeHours < currentMeeting.endTime.endTimeHours){ //Next meeting's start hour is less than current meeting's end hour
+                  console.log('clash for ', nextMeeting);
+                  // Remove the meeting
+                  meetingsArray.splice(j,1);
                 }
             }
           }
@@ -35,8 +36,7 @@ const CheckClashes = () => {
 
       }
 
-      const {meetingsArray} = useContext(MeetingsArrayContext);
-    useEffect(()=>checkClashes(meetingsArray), [meetingsArray])
+    useEffect(()=>checkClashes(props.meetingsArray), [props.meetingsArray])
   return <></>;
 };
 

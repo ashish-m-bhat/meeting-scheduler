@@ -1,12 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { MeetingsArrayContext } from '../Context/MeetingsArrayContextProvider';
+import React, { useEffect } from 'react';
 import '../UI/CreateMeetingDivs.css';
 
 /*
   1. Create a main div meetingsDiv. This will be appended to the mainContainerDiv
   2. For each meeting ( we will be looking at non clashing only), create a div and set the properties
 */
-const CreateMeetingDivs = () => {
+const CreateMeetingDivs = (props) => {
 
     const createMeetingDivs = (meetingsArray) =>{
 
@@ -42,8 +41,7 @@ const CreateMeetingDivs = () => {
         document.getElementById('mainContainerDiv').appendChild(meetingsDiv);
       }
 
-      const {meetingsArray} = useContext(MeetingsArrayContext);
-      useEffect(()=> createMeetingDivs(meetingsArray), [meetingsArray]);
+      useEffect(()=> createMeetingDivs(props.meetingsArray), [props.meetingsArray]);
   return (
        <></>
   )

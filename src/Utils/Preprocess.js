@@ -27,7 +27,7 @@ Each array element of meetingsArray will be of type:
   }
 */
 
-const Preprocess = () => {
+const Preprocess = (props) => {
   const preprocess = (meetingsArray) => {
     for (let i = 0; i < meetingsArray.length; i++) {
       const currentMeeting = meetingsArray[i];
@@ -52,8 +52,7 @@ const Preprocess = () => {
     }
   };
 
-  const {meetingsArray} = useContext(MeetingsArrayContext);
-  useEffect(() => preprocess(meetingsArray), [meetingsArray]);
+  useEffect(() => preprocess(props.meetingsArray), [props.meetingsArray]);
 
   return <></>;
 };
