@@ -1,5 +1,5 @@
 import Calendar from "./Components/Calendar";
-import './App.css';
+import './UI/App.css';
 
 // Initial Array
 var descriptionArray = [

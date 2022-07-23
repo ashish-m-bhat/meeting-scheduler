@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './CreateMeetingDivs.css';
+import '../UI/CreateMeetingDivs.css';
 
 /*
   1. Create a main div meetingsDiv. This will be appended to the mainContainerDiv

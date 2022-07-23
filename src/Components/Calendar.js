@@ -4,7 +4,7 @@ import CreateMeetingDivs from "../Utils/CreateMeetingDivs";
 import CreateTimingDivs from "../Utils/CreateTimingDivs";
 import Preprocess from "../Utils/Preprocess";
 import SortMeetings from "../Utils/SortMeetings";
-import './Calendar.css';
+import '../UI/Calendar.css';
 
 /*
   1. Precrocess the meetings array

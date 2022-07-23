@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './CreateTimingDivs.css';
+import '../UI/CreateTimingDivs.css';
 
 /*
   1. Create a main div timingsDiv. This will be appended to the mainContainerDiv
