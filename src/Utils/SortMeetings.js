@@ -1,13 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
 
 // Sort the meetings acc to the starting time
-const SortMeetings = (props) => {
-  function sortMeetings(descriptionArray) {
-    descriptionArray.sort(
+const SortMeetings = () => {
+  function sortMeetings(meetingsArray) {
+    meetingsArray.sort(
       (a, b) => a.startTime.startTimeHours - b.startTime.startTimeHours
     );
   }
-  useEffect(() => sortMeetings(props.descriptionArray), [props.descriptionArray]);
+
+  const {meetingsArray} = useContext(MeetingsArrayContext);
+  useEffect(() => sortMeetings(meetingsArray), [meetingsArray]);
   return <></>;
 };
 

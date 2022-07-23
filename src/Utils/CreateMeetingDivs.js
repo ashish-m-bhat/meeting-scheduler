@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { MeetingsArrayContext } from '../Context/MeetingsArrayContextProvider';
 import '../UI/CreateMeetingDivs.css';
 
 /*
   1. Create a main div meetingsDiv. This will be appended to the mainContainerDiv
   2. For each meeting ( we will be looking at non clashing only), create a div and set the properties
 */
-const CreateMeetingDivs = (props) => {
+const CreateMeetingDivs = () => {
 
-    const createMeetingDivs = (descriptionArray) =>{
+    const createMeetingDivs = (meetingsArray) =>{
 
         // Create the outer div
         const meetingsDiv = document.createElement('div');
         meetingsDiv.setAttribute('id', 'meetingsDiv');
 
-        for(let i=0;i<descriptionArray.length;i++){
-          const currentMeeting = descriptionArray[i];
+        for(let i=0;i<meetingsArray.length;i++){
+          const currentMeeting = meetingsArray[i];
           let duration = (currentMeeting.endTime.endTimeHours - currentMeeting.startTime.startTimeHours) +
                          (currentMeeting.endTime.endTimeMinutes - currentMeeting.startTime.startTimeMinutes)/60;
 
@@ -41,7 +42,8 @@ const CreateMeetingDivs = (props) => {
         document.getElementById('mainContainerDiv').appendChild(meetingsDiv);
       }
 
-      useEffect(()=> createMeetingDivs(props.descriptionArray), [props.descriptionArray]);
+      const {meetingsArray} = useContext(MeetingsArrayContext);
+      useEffect(()=> createMeetingDivs(meetingsArray), [meetingsArray]);
   return (
        <></>
   )

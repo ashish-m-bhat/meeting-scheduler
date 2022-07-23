@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
+import { MeetingsArrayContext } from "../Context/MeetingsArrayContextProvider";
 
 // Helper function. Returns an object fo hour and mins
 const getHoursMinutes = (arr) => {
@@ -17,8 +18,8 @@ const getHoursMinutes = (arr) => {
 };
 
 /*
-Removes the spaces, am pm, : and modifies the descriptionArray to have meaningful data
-Each array element of descriptionArray will be of type:
+Removes the spaces, am pm, : and modifies the meetingsArray to have meaningful data
+Each array element of meetingsArray will be of type:
 {
     desc: 'some desc',
     startTime: { startTimeHours, startTimeMinutes },
@@ -26,10 +27,10 @@ Each array element of descriptionArray will be of type:
   }
 */
 
-const Preprocess = (props) => {
-  const preprocess = (descriptionArray) => {
-    for (let i = 0; i < descriptionArray.length; i++) {
-      const currentMeeting = descriptionArray[i];
+const Preprocess = () => {
+  const preprocess = (meetingsArray) => {
+    for (let i = 0; i < meetingsArray.length; i++) {
+      const currentMeeting = meetingsArray[i];
       let { startTime, endTime } = currentMeeting;
       const startTimeArr = startTime.split("");
       const endTimeArr = endTime.split("");
@@ -40,18 +41,19 @@ const Preprocess = (props) => {
         getHoursMinutes(endTimeArr);
 
       // Remove the meeting
-      descriptionArray.splice(i, 1);
+      meetingsArray.splice(i, 1);
       const newDesc = {
         desc: currentMeeting.desc,
         startTime: { startTimeHours, startTimeMinutes },
         endTime: { endTimeHours, endTimeMinutes },
       };
       // Add the newly structured meeting
-      descriptionArray.splice(i, 0, newDesc);
+      meetingsArray.splice(i, 0, newDesc);
     }
   };
 
-  useEffect(() => preprocess(props.descriptionArray), [props.descriptionArray]);
+  const {meetingsArray} = useContext(MeetingsArrayContext);
+  useEffect(() => preprocess(meetingsArray), [meetingsArray]);
 
   return <></>;
 };

@@ -6,7 +6,7 @@ import '../UI/CreateTimingDivs.css';
   2. For the each hour of the day, create a div and set the properties
 */
 
-const CreateTimingDivs = (props) => {
+const CreateTimingDivs = () => {
     const createTimingDivs = () =>{
 
         // Create the outer div

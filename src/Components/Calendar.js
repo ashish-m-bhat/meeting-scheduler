@@ -13,15 +13,14 @@ import '../UI/Calendar.css';
   4. Create the div and divs for marking times
   5. Create div and divs for showing the meetings
 */
-const Calendar = (props) => {
-
+const Calendar = () => {
   return (
     <div id="mainContainerDiv">
-      <Preprocess descriptionArray={props.descriptionArray} />
-      <SortMeetings descriptionArray={props.descriptionArray} />
-      <CheckClashes descriptionArray={props.descriptionArray} />
-      <CreateTimingDivs descriptionArray={props.descriptionArray} />
-      <CreateMeetingDivs descriptionArray={props.descriptionArray} />
+      <Preprocess />
+      <SortMeetings />
+      <CheckClashes />
+      <CreateTimingDivs />
+      <CreateMeetingDivs />
     </div>
   );
 };
