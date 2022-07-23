@@ -1,0 +1,14 @@
+.App{
+    background-color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+    height: 98vh;
+  }
+
+  .mydiv{
+    height: 10vh;
+    width: 10vw;
+    background-color: red;
+  }
