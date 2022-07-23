@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import SortMeetings from "../../Utils/SortMeetings";
-import CheckClashes from "../../Utils/CheckClashes";
+import CheckClashes from "../../Utils/checkClashes";
 import DisplayTimings from "../DisplayTimings/DisplayTimings";
 import DisplayMeetings from "../DisplayMeetings/DisplayMeetings";
 import { useLocation } from "react-router";
@@ -28,9 +28,8 @@ const MeetingRoom = () => {
 
   return (
     <div className={cssClasses.mainContainerDiv}>
-      <SortMeetings meetingsArray={meetingsArray[roomId]}/>
-      <CheckClashes meetingsArray={meetingsArray[roomId]}/>
       <DisplayTimings />
+      <SortMeetings meetingsArray={meetingsArray[roomId]}/>
       <DisplayMeetings meetingsArray={meetingsArray[roomId]}/>
     </div>
   );

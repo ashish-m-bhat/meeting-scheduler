@@ -26,34 +26,28 @@ Each array element of meetingsArray will be of type:
   }
 */
 
-const Preprocess = (props) => {
-  const preprocess = (meetingsArray) => {
-    for (let i = 0; i < meetingsArray.length; i++) {
-      const currentMeeting = meetingsArray[i];
-      let { startTime, endTime } = currentMeeting;
-      const startTimeArr = startTime.split("");
-      const endTimeArr = endTime.split("");
+const preprocess = (meetingsArray) => {
+  for (let i = 0; i < meetingsArray.length; i++) {
+    const currentMeeting = meetingsArray[i];
+    let { startTime, endTime } = currentMeeting;
+    const startTimeArr = startTime.split("");
+    const endTimeArr = endTime.split("");
 
-      const { hours: startTimeHours, minutes: startTimeMinutes } =
-        getHoursMinutes(startTimeArr);
-      const { hours: endTimeHours, minutes: endTimeMinutes } =
-        getHoursMinutes(endTimeArr);
+    const { hours: startTimeHours, minutes: startTimeMinutes } =
+      getHoursMinutes(startTimeArr);
+    const { hours: endTimeHours, minutes: endTimeMinutes } =
+      getHoursMinutes(endTimeArr);
 
-      // Remove the meeting
-      meetingsArray.splice(i, 1);
-      const newDesc = {
-        desc: currentMeeting.desc,
-        startTime: { startTimeHours, startTimeMinutes },
-        endTime: { endTimeHours, endTimeMinutes },
-      };
-      // Add the newly structured meeting
-      meetingsArray.splice(i, 0, newDesc);
-    }
-  };
+    // Remove the meeting
+    meetingsArray.splice(i, 1);
+    const newDesc = {
+      desc: currentMeeting.desc,
+      startTime: { startTimeHours, startTimeMinutes },
+      endTime: { endTimeHours, endTimeMinutes },
+    };
+    // Add the newly structured meeting
+    meetingsArray.splice(i, 0, newDesc);
+  }
+}
 
-  useEffect(() => preprocess(props.meetingsArray), [props.meetingsArray]);
-
-  return <></>;
-};
-
-export default Preprocess;
+export default preprocess;

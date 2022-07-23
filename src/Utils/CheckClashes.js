@@ -9,35 +9,29 @@ import React, { useEffect } from "react";
       b. Next meeting's start hour is less than current meeting's end hour
 */
 
-const CheckClashes = (props) => {
-    function checkClashes(meetingsArray){
-        for(let i=0;i<meetingsArray.length-1;i++){
-          let j=i+1;
-          while(meetingsArray.length >=1 && j < meetingsArray.length){
-            const currentMeeting = meetingsArray[i], nextMeeting = meetingsArray[j];
 
-            if(nextMeeting.startTime.startTimeHours > currentMeeting.endTime.endTimeHours){
-              // No clash
-              j++;
-              continue;
-            }
-            else{ // Next meeting's start hour and current meetings end hour is same and next meeting's start minutes is less than current meeting's end minutes
-              if((nextMeeting.startTime.startTimeHours === currentMeeting.endTime.endTimeHours && nextMeeting.startTime.startTimeMinutes < currentMeeting.endTime.endTimeMinutes)
-                                                          ||
-                nextMeeting.startTime.startTimeHours < currentMeeting.endTime.endTimeHours){ //Next meeting's start hour is less than current meeting's end hour
-                  // console.log('clash for ', nextMeeting);
-                  // Remove the meeting
-                  meetingsArray.splice(j,1);
-                }
-            }
-          }
+export default function checkClashes(meetingsArray){
+    for(let i=0;i<meetingsArray.length-1;i++){
+      let j=i+1;
+      while(meetingsArray.length >=1 && j < meetingsArray.length){
+        const currentMeeting = meetingsArray[i], nextMeeting = meetingsArray[j];
+
+        if(nextMeeting.startTime.startTimeHours > currentMeeting.endTime.endTimeHours){
+          // No clash
+          j++;
+          continue;
         }
-
-
+        else{ // Next meeting's start hour and current meetings end hour is same and next meeting's start minutes is less than current meeting's end minutes
+          if((nextMeeting.startTime.startTimeHours === currentMeeting.endTime.endTimeHours && nextMeeting.startTime.startTimeMinutes < currentMeeting.endTime.endTimeMinutes)
+                                                      ||
+            nextMeeting.startTime.startTimeHours < currentMeeting.endTime.endTimeHours){ //Next meeting's start hour is less than current meeting's end hour
+              // console.log('clash for ', nextMeeting);
+              // Remove the meeting
+              meetingsArray.splice(j,1);
+            }
+        }
       }
+    }
 
-    useEffect(()=>checkClashes(props.meetingsArray), [props.meetingsArray])
-  return <></>;
-};
 
-export default CheckClashes;
+  }
