@@ -1,6 +1,7 @@
 import { Redirect, Route, Switch } from "react-router";
-import MeetingRoom from "./Components/MeetingRoom";
-import './UI/App.css';
+import MeetingRoom from "./Components/MeetingRoom/MeetingRoom";
+import NavigationBar from "./Components/NavigationBar/NavigationBar";
+import cssClasses from './App.module.css';
 
 /*
   We have multiple meeting rooms. Each room has a roomId and each page is dedicated to the meeting room with the id
@@ -10,7 +11,8 @@ import './UI/App.css';
 
 function App() {
   return (
-    <div className='App'>
+    <div className={cssClasses.App}>
+      <NavigationBar />
       <Switch>
         <Route path='/' exact>
           <MeetingRoom />
@@ -19,6 +21,9 @@ function App() {
           <Redirect to='/' />
         </Route>
         <Route path='/room2' exact>
+          <MeetingRoom />
+        </Route>
+        <Route path='/room3' exact>
           <MeetingRoom />
         </Route>
       </Switch>

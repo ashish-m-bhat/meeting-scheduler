@@ -1,15 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
-import { Toolbar, Typography } from '@mui/material';
-import { Link, NavLink } from 'react-router-dom';
+import { Toolbar, CssBaseline, Tabs, Tab } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 const NavigationBar = () => {
+  const [hightlightTab, setHightlightTab] = useState('/room1');
   return (
-    <AppBar>
+    <AppBar position="static">
+        <CssBaseline />
         <Toolbar>
-                <Link to='/room1'>Room 1</Link>
-                <Link to='/room2'>Room 2</Link>
-                <Link to='/room3'>Room 3</Link>
+          <Tabs textColor='inherit' value={hightlightTab} onChange={((e,val)=>setHightlightTab(val))}
+          TabIndicatorProps={{style: {background:'blue'}}} sx={{'margin':'auto '}}>
+            <Tab label="Room 1" value="/room1" component={NavLink} to={'/room1'} />
+            <Tab label="Room 2" value="/room2" component={NavLink} to={'/room2'} />
+            <Tab label="Room 3" value="/room3" component={NavLink} to={'/room3'} />
+          </Tabs>
         </Toolbar>
     </AppBar>
 
