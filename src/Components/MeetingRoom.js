@@ -29,7 +29,6 @@ const MeetingRoom = () => {
 
   return (
     <div id="mainContainerDiv">
-      <Preprocess meetingsArray={meetingsArray[roomId]} />
       <SortMeetings meetingsArray={meetingsArray[roomId]}/>
       <CheckClashes meetingsArray={meetingsArray[roomId]}/>
       <CreateTimingDivs />
