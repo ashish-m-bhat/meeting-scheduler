@@ -2,7 +2,7 @@ import React from 'react';
 import preprocess from '../../Utils/preprocess';
 import NewMeetingForm from './NewMeetingForm';
 
-const NewMeeting = ({meetingsArray, setRefreshMeetings}) => {
+const NewMeeting = ({roomId, meetingsArray, setRefreshMeetings}) => {
 
     // Data received from the form for the new meeting
     // Preprocess it, check for clashes. If not, add it to the correct slot. No sorting is needed here
@@ -50,6 +50,8 @@ const NewMeeting = ({meetingsArray, setRefreshMeetings}) => {
             if(clashed)
                     alert('clashed');
         }
+        localStorage.setItem(roomId, JSON.stringify(meetingsArray));
+
         // Refresh the meetings. This will re render the MeetingRoom component
         setRefreshMeetings(state => !state);
 

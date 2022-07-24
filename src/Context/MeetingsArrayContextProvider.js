@@ -18,6 +18,13 @@ let room1Array = [
     {desc:'3v3', 'startTime':'10:00 pm', 'endTime': '10:45 pm'},
   ];
 
+  let room3Array = [
+    {desc:'1v1', 'startTime':'09:00 am', 'endTime': '09:30 am'},
+    {desc:'3v3', 'startTime':'09:35 pm', 'endTime': '10:45 pm'},
+    {desc:'hehe', 'startTime':'10:10 am', 'endTime': '11:30 am'},
+  ];
+
+  const initialMeetingArrays = [room1Array, room2Array, room3Array];
 
 export const MeetingsArrayContext = createContext({
     meetingsArray:{}
@@ -27,15 +34,25 @@ export const MeetingsArrayContext = createContext({
  meetingsArray = {
                     room1: [],
                     room2: [],
+                    room3: [],
                   }
 */
-const MeetingsArrayContextProvider = props => {
-  preprocess(room1Array);
-  preprocess(room2Array);
-  checkClashes(room1Array);
-  checkClashes(room2Array);
 
-    const [meetingsArray, setMeetingsArray] = useState({'room1':room1Array, 'room2':room2Array, 'room3':room1Array});
+const MeetingsArrayContextProvider = props => {
+  const newInitialArray=[]
+  initialMeetingArrays.forEach((eachRoomArray, index) =>{
+    if(localStorage.getItem('room'+(index+1))){
+      eachRoomArray = JSON.parse(localStorage.getItem('room'+(index+1)));
+      newInitialArray.push(eachRoomArray);
+    }
+    else{
+      preprocess(eachRoomArray);
+      checkClashes(eachRoomArray);
+      localStorage.setItem('room'+(index+1), JSON.stringify(eachRoomArray))
+    }
+  });
+
+    const [meetingsArray, setMeetingsArray] = useState({'room1':newInitialArray[0], 'room2':newInitialArray[1], 'room3':newInitialArray[2]});
 
   return (
     <MeetingsArrayContext.Provider value={{meetingsArray:meetingsArray}}>
