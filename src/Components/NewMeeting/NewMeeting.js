@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import preprocess from '../../Utils/preprocess';
 import NewMeetingForm from './NewMeetingForm';
+import cssClasses from './NewMeetingForm.module.css';
 
 const NewMeeting = ({roomId, meetingsArray, setRefreshMeetings}) => {
+    const [showNewMeetingForm, setShowNewMeetingForm] = useState(false);
 
     // Data received from the form for the new meeting
     // Preprocess it, check for clashes. If not, add it to the correct slot. No sorting is needed here
@@ -48,7 +50,7 @@ const NewMeeting = ({roomId, meetingsArray, setRefreshMeetings}) => {
 
             }
             if(clashed)
-                    alert('clashed');
+                    alert('Oops, your meeting clashes with another meeting. Please look for a different room for this slot');
         }
         localStorage.setItem(roomId, JSON.stringify(meetingsArray));
 
@@ -57,7 +59,10 @@ const NewMeeting = ({roomId, meetingsArray, setRefreshMeetings}) => {
 
     }
   return (
-    <NewMeetingForm NewMeetingSubmissionHandler={NewMeetingSubmissionHandler} />
+    <>
+        {!showNewMeetingForm && <p onClick={()=>setShowNewMeetingForm(true)} className={cssClasses.showFormToggle} >Book a New Meeting</p> }
+        {showNewMeetingForm && <NewMeetingForm NewMeetingSubmissionHandler={NewMeetingSubmissionHandler} setShowNewMeetingForm={setShowNewMeetingForm} /> }
+    </>
   )
 }
 

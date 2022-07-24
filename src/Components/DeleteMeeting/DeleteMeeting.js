@@ -1,4 +1,5 @@
 import React from 'react';
+import cssClasses from './DeleteMeeting.module.css';
 
 // Deletes a meeting by filtering the array, updating the localStorage and reloading the site
 const DeleteMeeting = ({meetingToDelete, meetingsArray, roomId, setRefreshMeetings}) => {
@@ -11,7 +12,7 @@ const DeleteMeeting = ({meetingToDelete, meetingsArray, roomId, setRefreshMeetin
         }
     }
   return (
-        <button onClick={deleteMeetingButtonHandler}>X</button>
+        <button onClick={deleteMeetingButtonHandler} className={cssClasses.deleteButton} >Delete</button>
   )
 }
 
