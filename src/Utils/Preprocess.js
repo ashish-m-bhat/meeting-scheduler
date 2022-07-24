@@ -4,8 +4,15 @@ import React, { useEffect } from "react";
 const getHoursMinutes = (arr) => {
   let hours = 0,
     minutes = 0;
+
+  if (arr[arr.length - 2] === "a" && arr[0] === '1' && arr[1] === '2') {
+    // For 12am, subtract 12hrs. So later it would be nullified
+      hours -= 12;
+  }
   if (arr[arr.length - 2] === "p") {
-    hours += 12;
+    // For 12pm, don't add 12 hrs
+    if(!(arr[0] === '1' && arr[1] === '2'))
+      hours += 12;
   }
   arr.splice(5);
   hours += +arr.slice(0, 2).join("");
