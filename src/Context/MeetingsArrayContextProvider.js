@@ -27,7 +27,7 @@ let room1Array = [
   const initialMeetingArrays = [room1Array, room2Array, room3Array];
 
 export const MeetingsArrayContext = createContext({
-    meetingsArray:{}
+    meetingsArrayObject:{}
 });
 
 /* meetingsArray will be an object of arrays
@@ -52,10 +52,10 @@ const MeetingsArrayContextProvider = props => {
     }
   });
 
-    const [meetingsArray, setMeetingsArray] = useState({'room1':newInitialArray[0], 'room2':newInitialArray[1], 'room3':newInitialArray[2]});
+    const [meetingsArrayObject, setMeetingsArrayObject] = useState({'room1':newInitialArray[0], 'room2':newInitialArray[1], 'room3':newInitialArray[2]});
 
   return (
-    <MeetingsArrayContext.Provider value={{meetingsArray:meetingsArray}}>
+    <MeetingsArrayContext.Provider value={{meetingsArrayObject:meetingsArrayObject}}>
         {props.children}
     </MeetingsArrayContext.Provider>
   )

@@ -6,7 +6,7 @@ import EachMeeting from './EachMeeting';
   1. Create a main div meetingsDiv. This will be appended to the mainContainerDiv
   2. For each meeting ( we will be looking at non clashing only), create a div and set the properties
 */
-const DisplayMeetings = ({meetingsArray}) => {
+const DisplayMeetings = ({meetingsArray, roomId, setRefreshMeetings}) => {
 
     const createMeetingDivs = (meetingsArray) =>{
 
@@ -25,7 +25,7 @@ const DisplayMeetings = ({meetingsArray}) => {
        <div className={cssClasses.meetingsDiv}>
         {meetingsArray.map(eachMeeting =>{
           return(
-            <EachMeeting key={Math.random()*1000} meeting={eachMeeting} />
+            <EachMeeting key={Math.random()*1000} meeting={eachMeeting} meetingsArray={meetingsArray} roomId={roomId} setRefreshMeetings={setRefreshMeetings} />
           )
         })}
        </div>

@@ -26,14 +26,14 @@ const MeetingRoom = () => {
     roomId=pathname.substring(1);
   }
 
-    const {meetingsArray} = useContext(MeetingsArrayContext);
+  const {meetingsArrayObject} = useContext(MeetingsArrayContext);
 
   return (
     <div className={cssClasses.mainContainerDiv}>
       <DisplayTimings />
-      <SortMeetings meetingsArray={meetingsArray[roomId]}/>
-      <DisplayMeetings meetingsArray={meetingsArray[roomId]}/>
-      <NewMeeting setRefreshMeetings={setRefreshMeetings} meetingsArray={meetingsArray[roomId]}/>
+      <SortMeetings meetingsArray={meetingsArrayObject[roomId]}/>
+      <DisplayMeetings meetingsArray={meetingsArrayObject[roomId]} roomId={roomId} setRefreshMeetings={setRefreshMeetings} />
+      <NewMeeting setRefreshMeetings={setRefreshMeetings} meetingsArray={meetingsArrayObject[roomId]} roomId={roomId} />
     </div>
   );
 };
