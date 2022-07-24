@@ -8,19 +8,6 @@ import EachMeeting from './EachMeeting';
 */
 const DisplayMeetings = ({meetingsArray, roomId, setRefreshMeetings}) => {
 
-    const createMeetingDivs = (meetingsArray) =>{
-
-        // Create the outer div
-        // const meetingsDiv = document.createElement('div');
-        // meetingsDiv.setAttribute('id', 'meetingsDiv');
-
-        for(let i=0;i<meetingsArray.length;i++){
-
-        }
-
-        // Append the outer div to the main div
-        // document.getElementById('mainContainerDiv').appendChild(meetingsDiv);
-      }
   return (
        <div className={cssClasses.meetingsDiv}>
         {meetingsArray.map(eachMeeting =>{

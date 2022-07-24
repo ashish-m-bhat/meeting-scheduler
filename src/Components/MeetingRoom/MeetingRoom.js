@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import SortMeetings from "../../Utils/SortMeetings";
-import CheckClashes from "../../Utils/checkClashes";
 import DisplayTimings from "../DisplayTimings/DisplayTimings";
 import DisplayMeetings from "../DisplayMeetings/DisplayMeetings";
 import { useLocation } from "react-router";

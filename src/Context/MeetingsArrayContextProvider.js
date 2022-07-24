@@ -52,7 +52,7 @@ const MeetingsArrayContextProvider = props => {
     }
   });
 
-    const [meetingsArrayObject, setMeetingsArrayObject] = useState({'room1':newInitialArray[0], 'room2':newInitialArray[1], 'room3':newInitialArray[2]});
+    const [meetingsArrayObject] = useState({'room1':newInitialArray[0], 'room2':newInitialArray[1], 'room3':newInitialArray[2]});
 
   return (
     <MeetingsArrayContext.Provider value={{meetingsArrayObject:meetingsArrayObject}}>

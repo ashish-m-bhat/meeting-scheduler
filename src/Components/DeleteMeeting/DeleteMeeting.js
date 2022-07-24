@@ -6,7 +6,7 @@ const DeleteMeeting = ({meetingToDelete, meetingsArray, roomId, setRefreshMeetin
     const deleteMeetingButtonHandler = (e) =>{
         if(window.confirm(`Are you sure want to delete the meeting ${meetingToDelete.desc} ?`)){
             setRefreshMeetings(state => !state); // Doesn't work. Does rerender the parent components but state isn't updated then. Further investigation needed.
-            meetingsArray = meetingsArray.filter(eachMeeting => eachMeeting.desc != meetingToDelete.desc);
+            meetingsArray = meetingsArray.filter(eachMeeting => eachMeeting.desc !== meetingToDelete.desc);
             localStorage.setItem(roomId, JSON.stringify(meetingsArray));
             window.location.reload();
         }

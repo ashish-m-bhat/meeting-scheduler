@@ -1,5 +1,3 @@
-import React, { useEffect } from "react";
-
 /*
   1. Check if there's any clash in the sorted meetingsArray
   2. If there's a clash, remove the 2nd meeting
