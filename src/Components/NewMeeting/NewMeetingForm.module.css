@@ -1,0 +1,60 @@
+.newMeetingForm, .showFormToggle{
+    background-color: #201E1F;
+    box-shadow: rgba(100, 94, 94, 0.56) 0px 22px 70px 20px;    width:auto;
+    color: white;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    padding: 1vw;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+input{
+    height: 3vh;
+    border-radius: 5px;
+    box-shadow: inset ;
+}
+label{
+    display: none;
+}
+
+.buttonSection{
+    margin-top: 1vh;
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+form button{
+    box-shadow: #464EB8 0px 54px 105px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    height: 3vh;
+    background-color: #464EB8;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+form button:hover{
+    color: red;
+}
+
+.showFormToggle{
+    cursor: pointer;
+    margin-left: 1.4vw;
+    border: none;
+}
+
+@media only screen and (max-width:1000px){
+    .newMeetingForm{
+        margin-top: none;
+        margin-bottom: 3vh;
+        position: absolute;
+        bottom: 0;
+    }
+  }

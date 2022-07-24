@@ -7,8 +7,8 @@
     height: 98vh;
   }
 
-  .mydiv{
-    height: 10vh;
-    width: 10vw;
-    background-color: red;
+  @media only screen and (max-width:1000px){
+    .App{
+      height: 100vh;
+    }
   }
