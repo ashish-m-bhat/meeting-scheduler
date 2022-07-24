@@ -1,16 +1,14 @@
-import React, { useEffect } from "react";
-
 // Helper function. Returns an object fo hour and mins
 const getHoursMinutes = (arr) => {
   let hours = 0,
     minutes = 0;
 
   if (arr[arr.length - 2] === "a" && arr[0] === '1' && arr[1] === '2') {
-    // For 12am, subtract 12hrs. So later it would be nullified
-      hours -= 12;
+    // For 12am, add 12hrs. So later it would be 24 later
+      hours += 12;
   }
   if (arr[arr.length - 2] === "p") {
-    // For 12pm, don't add 12 hrs
+    // Except for 12pm, add 12 hrs
     if(!(arr[0] === '1' && arr[1] === '2'))
       hours += 12;
   }
