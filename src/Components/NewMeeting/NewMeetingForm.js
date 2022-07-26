@@ -20,7 +20,7 @@ const NewMeetingForm = ({NewMeetingSubmissionHandler, setShowNewMeetingForm}) =>
         setDescription('')
         setStartTime('');
         setEndTime('');
-
+        setShowNewMeetingForm(false);
     }
 
   return (

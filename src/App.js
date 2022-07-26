@@ -26,6 +26,9 @@ function App() {
         <Route path='/room3' exact>
           <MeetingRoom />
         </Route>
+        <Route path='*'>
+          <Redirect to='/' />
+        </Route>
       </Switch>
     </div>
   );
