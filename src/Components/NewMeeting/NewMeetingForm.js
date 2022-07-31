@@ -14,6 +14,10 @@ const NewMeetingForm = ({NewMeetingSubmissionHandler, setShowNewMeetingForm}) =>
             window.alert('Please add all the fields!');
             return;
         }
+        if(startTime.match("(((0[1-9])|(1[0-2])):([0-5])(0|5) (a|p)m)") === null || endTime.match("(((0[1-9])|(1[0-2])):([0-5])(0|5) (a|p)m)") === null){
+            alert("Incorrect time format");
+            return;
+        }
 
             // Call the parent method passed through props as an object
         NewMeetingSubmissionHandler({desc:description, startTime, endTime});
@@ -37,13 +41,13 @@ const NewMeetingForm = ({NewMeetingSubmissionHandler, setShowNewMeetingForm}) =>
                 <label htmlFor='startTime'>
                     Start Time : hh:mm am/pm
                 </label>
-                <input type='text' name='startTime' value={startTime} onChange={(e)=>setStartTime(e.target.value)} placeholder='Start Time hh:mm am/pm' />
+                <input type='text' name='startTime' value={startTime} onChange={(e)=>setStartTime(e.target.value)} placeholder='Start Time hh:mm am/pm' pattern='(((0[1-9])|(1[0-2])):([0-5])(0|5)\s(a|p)m)'/>
             </p>
             <p>
                 <label htmlFor='startTime'>
                     End Time : hh:mm am/pm
                 </label>
-                <input type='text' name='endTime' value={endTime} onChange={(e)=>setEndTime(e.target.value)} placeholder='End Time hh:mm am/pm' />
+                <input type='text' name='endTime' value={endTime} onChange={(e)=>setEndTime(e.target.value)} placeholder='End Time hh:mm am/pm' pattern='(((0[1-9])|(1[0-2])):([0-5])(0|5)\s(a|p)m)'/>
             </p>
                 <div className={cssClasses.buttonSection}>
                     <button onClick={()=>setShowNewMeetingForm(false)}> Cancel </button>
